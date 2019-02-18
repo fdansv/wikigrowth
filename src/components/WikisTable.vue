@@ -14,7 +14,7 @@
             <th @click = 'changeSorting(2)'
                 :class='{"sorting": sortedColumn === 2}'
                 class='number'>
-                Articles in December 2018
+                Articles in January 2019
             </th>
             <th @click = 'changeSorting(3)'
                 :class='{"sorting": sortedColumn === 3}'
