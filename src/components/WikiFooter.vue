@@ -1,0 +1,31 @@
+<template>
+	<div class="wikiheader">
+		<div class="box">
+			<div class= 'logobox'>
+				<div>
+					<img class='logo' src="../assets/logo.png">
+				</div>
+				<div>
+					<span class='wikistatstitle'>WIKISTATS</span>
+				</div>
+				<p>
+					Growth in this page is measured by variation in number of articles created over one year. <a target="_blank" href="https://meta.wikimedia.org/wiki/Research:Wikistats_metrics/Pages_to_date">Learn more about the pages to date Wikistats metric</a>.
+				</p>
+				<p>
+					Made by the <a target="_blank" href='https://wikitech.wikimedia.org/wiki/Analytics'>A-Team</a> using the <a target="_blank" href="https://wikitech.wikimedia.org/wiki/Analytics/Data_Lake">Analytics Data Lake</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</template>
+<script type="text/javascript">
+	export default {
+		name: 'wiki-footer'
+	}
+</script>
+<style>
+	.wikiheader p a{
+		text-decoration:none;
+		color: yellow;
+	}
+</style>
