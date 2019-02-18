@@ -26,7 +26,7 @@
             <td
                 class='wikiname'
                 :class='{"sorting": sortedColumn === 0}'>
-                <a :href="'https://stats.wikimedia.org/v2/#/' + wiki.wiki" >{{findWiki(wiki)}}</a>
+                <a :href="'https://stats.wikimedia.org/v2/#/' + wiki.wiki + '.org'" >{{findWiki(wiki)}}</a>
             </td>
             <td
                 class='number'
