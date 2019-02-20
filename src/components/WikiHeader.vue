@@ -49,6 +49,11 @@
 
 		text-align: center;
 	}
+	@media only screen and (max-width: 600px) {
+	  .wikiheader {
+	    font-size: 35px;
+	  }
+	}
 	.logo {
 		width: 70px;
 		filter: brightness(0) invert(1);

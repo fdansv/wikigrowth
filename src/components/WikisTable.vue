@@ -106,6 +106,8 @@
 <style scoped>
 .wikistable {
     margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .wikistable a {
     text-decoration: none;
