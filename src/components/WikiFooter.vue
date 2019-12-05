@@ -12,7 +12,7 @@
 					Growth in this page is measured by the variation in number of articles created over one year. <a target="_blank" href="https://meta.wikimedia.org/wiki/Research:Wikistats_metrics/Pages_to_date">Learn more about the pages to date Wikistats metric</a>.
 				</p>
 				<p>
-					Made by the <a target="_blank" href='https://wikitech.wikimedia.org/wiki/Analytics'>A-Team</a> using the <a target="_blank" href="https://wikitech.wikimedia.org/wiki/Analytics/Data_Lake">Analytics Data Lake</a>
+					Made by <a target="_blank" href='http://francisco.dance/'>Francisco Dans</a> using the <a target="_blank" href="https://wikitech.wikimedia.org/wiki/Analytics/Data_Lake">Analytics Data Lake</a> by the <a target="_blank" href='https://wikitech.wikimedia.org/wiki/Analytics'>A-Team</a>
 				</p>
 			</div>
 		</div>

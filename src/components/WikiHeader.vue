@@ -10,7 +10,7 @@
 				</div>
 			</div>
 			<div class='title'>
-				2018 WIKIS BY GROWTH
+				<year-selector @newYear="yearChanged" /> WIKIS BY GROWTH
 			</div>
 		</div>
 		<family-selector @familyChanged="familyChanged"/>
@@ -18,14 +18,19 @@
 </template>
 <script type="text/javascript">
 	import FamilySelector from './FamilySelector.vue';
+	import YearSelector from './YearSelector.vue';
 	export default {
 		name: 'wiki-header',
 		components: {
-			FamilySelector
+			FamilySelector,
+			YearSelector
 		},
 		methods: {
 			familyChanged (family) {
 				this.$emit('familyChanged', family);
+			},
+			yearChanged (year) {
+				this.$emit('yearChanged', year);
 			}
 		}
 	};

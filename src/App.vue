@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <wiki-header @familyChanged="familyChanged"></wiki-header>
-    <wikis-table :family="family"></wikis-table>
+    <wiki-header @yearChanged="yearChanged" @familyChanged="familyChanged"></wiki-header>
+    <wikis-table :family="family" :year="year"></wikis-table>
     <wiki-footer></wiki-footer>
   </div>
 </template>
@@ -15,7 +15,8 @@ export default {
   name: 'app',
   data () {
     return {
-      family: 'wikipedia'
+      family: 'wikipedia',
+      year: 2018
     }
   },
   components: {
@@ -26,6 +27,9 @@ export default {
   methods: {
     familyChanged (family) {
       this.family = family;
+    },
+    yearChanged (year) {
+      this.year = year;
     }
   }
 }

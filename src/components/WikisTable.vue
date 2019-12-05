@@ -9,12 +9,12 @@
             <th @click = 'changeSorting(1)'
                 :class='{"sorting": sortedColumn === 1}'
                 class='number'>
-                Articles in January 2018
+                Articles in January {{year}}
             </th>
             <th @click = 'changeSorting(2)'
                 :class='{"sorting": sortedColumn === 2}'
                 class='number'>
-                Articles in January 2019
+                Articles in January {{year + 1}}
             </th>
             <th @click = 'changeSorting(3)'
                 :class='{"sorting": sortedColumn === 3}'
@@ -49,10 +49,10 @@
 <script type="text/javascript">
     import sitematrix from '../sitematrix.json';
     import {format} from 'd3-format';
-    import allWikis from '../../families/allWikis2018.json'
+    import years from '../../families';
     export default {
         name: 'wikis-table',
-        props: ['family'],
+        props: ['family', 'year'],
         data () {
             return {
                 sortedColumn: 3,
@@ -61,7 +61,7 @@
         },
         methods: {
             formattedWikiData (sortedColumn) {
-                return allWikis
+                return years[this.year]
                     .filter( wiki => wiki.start > 0)
                     .filter( wiki => (wiki.wiki.indexOf(this.family) > -1) || !this.family)
                     .sort((el1 , el2) => {
@@ -91,7 +91,7 @@
                 return (found && found.localname + ' ' + family) || w.wiki
             },
             formatPercentage(number) {
-                return Math.round(number*100)/100 + '%';
+                return format(",")(Math.round(number*100)/100) + '%';
             },
             formatThousands(number) {
                 return format(",")(number);
