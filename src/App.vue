@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       family: 'wikipedia',
-      year: 2018
+      year: 2019
     }
   },
   components: {

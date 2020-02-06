@@ -15,6 +15,7 @@ import allWikis2015 from './allWikis2015.json';
 import allWikis2016 from './allWikis2016.json';
 import allWikis2017 from './allWikis2017.json';
 import allWikis2018 from './allWikis2018.json';
+import allWikis2019 from './allWikis2019.json';
 export default {
     2002: allWikis2002,
     2003: allWikis2003,
@@ -33,4 +34,5 @@ export default {
     2016: allWikis2016,
     2017: allWikis2017,
     2018: allWikis2018,
+    2019: allWikis2019,
 }

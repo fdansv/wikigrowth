@@ -91,7 +91,7 @@
                 return (found && found.localname + ' ' + family) || w.wiki
             },
             formatPercentage(number) {
-                return format(",")(Math.round(number*100)/100) + '%';
+                return format(",")(Math.round(number * 100)/100) + '%';
             },
             formatThousands(number) {
                 return format(",")(number);

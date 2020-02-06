@@ -17,7 +17,7 @@
         name: 'year-selector',
         data () {
             return {
-                year: 2018,
+                year: 2019,
                 selecting: false,
                 draggingInfo: {
                     enterPosition: 0
@@ -46,7 +46,7 @@
             onDragging (evnt) {
                 if(!this.selecting) return;
                 const offset = evnt.clientX - this.draggingInfo.enterPosition;
-                const yearRange = [2002, 2019];
+                const yearRange = [2002, 2020];
                 const interpolatedYear = scale.scaleLinear()
                         .domain([0, 100])
                         .range(yearRange)(evnt.offsetX);
