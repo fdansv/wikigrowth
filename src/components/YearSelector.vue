@@ -17,7 +17,7 @@
         name: 'year-selector',
         data () {
             return {
-                year: 2019,
+                year: 2020,
                 selecting: false,
                 draggingInfo: {
                     enterPosition: 0
