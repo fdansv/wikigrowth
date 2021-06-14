@@ -22,7 +22,7 @@ jobs:
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
       env:
-        REPO: git@github.com:owner/repo.git
+        REPO: git@github.com:fdansv/wikigrowth.git
         BRANCH: gh-pages
         FOLDER: dist
         SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
