@@ -13,11 +13,12 @@
 </template>
 <script type="text/javascript">
     import * as scale from 'd3-scale';
+    const maxYear = 2022;
     export default {
         name: 'year-selector',
         data () {
             return {
-                year: 2020,
+                year: maxYear,
                 selecting: false,
                 draggingInfo: {
                     enterPosition: 0
@@ -30,7 +31,7 @@
             },
             onInput (e) {
                 const newYear = parseInt(e.target.textContent);
-                if (parseInt(newYear) >= 2001 && parseInt(newYear) < 2020) {
+                if (parseInt(newYear) >= 2001 && parseInt(newYear) < maxYear) {
                     this.year = newYear;
                     this.selecting = false;
                 }
@@ -46,11 +47,11 @@
             onDragging (evnt) {
                 if(!this.selecting) return;
                 const offset = evnt.clientX - this.draggingInfo.enterPosition;
-                const yearRange = [2002, 2020];
+                const yearRange = [2002, maxYear];
                 const interpolatedYear = scale.scaleLinear()
                         .domain([0, 100])
                         .range(yearRange)(evnt.offsetX);
-                this.year = parseInt(interpolatedYear);
+                this.year = Math.ceil(interpolatedYear);
             },
             onDragEnd (evnt) {
                 this.lockSelection(this.year);
