@@ -13,7 +13,7 @@
 </template>
 <script type="text/javascript">
     import * as scale from 'd3-scale';
-    const maxYear = 2022;
+    const maxYear = 2025;
     export default {
         name: 'year-selector',
         data () {
