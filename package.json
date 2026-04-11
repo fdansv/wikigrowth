@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "fetch-data": "node scripts/fetch_data.js"
   },
   "dependencies": {
     "d3-format": "^1.3.2",
