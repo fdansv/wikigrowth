@@ -22,7 +22,7 @@
                 Variation percentage
             </th>
         </tr>
-        <tr v-for="wiki in formattedWikiData(sortedColumn, family)">
+        <tr v-for="wiki in formattedWikiData(sortedColumn, family)" :key="wiki.wiki">
             <td
                 class='wikiname'
                 :class='{"sorting": sortedColumn === 0}'>

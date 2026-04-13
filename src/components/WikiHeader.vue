@@ -3,7 +3,7 @@
 		<div class="box">
 			<div class= 'logobox'>
 				<div>
-					<img class='logo' src="../assets/logo.png">
+					<img class='logo' alt="Wikistats logo" src="../assets/logo.png">
 				</div>
 				<div>
 					<span class='wikistatstitle'>WIKISTATS</span>

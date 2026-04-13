@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<select v-model="selectedFamily">
-			<option v-for="family in families" :value="family.family">{{family.name}}</option>
+			<option v-for="family in families" :key="family.code" :value="family.family">{{family.name}}</option>
 		</select>
 	</div>
 </template>
