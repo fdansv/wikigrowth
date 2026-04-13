@@ -1,14 +1,8 @@
 <template>
-    <div class='yearSelector' @click="toggleDropdown" ref="container">
-        <div v-if="!open">
-            {{year}}
-        </div>
+    <div class='yearSelector'>
         <select
-            v-else
             v-model="year"
             @change="onSelect"
-            @blur="open = false"
-            ref="dropdown"
             class="yearDropdown">
             <option v-for="y in years" :key="y" :value="y">{{y}}</option>
         </select>
@@ -21,8 +15,7 @@
         name: 'year-selector',
         data () {
             return {
-                year: maxYear,
-                open: false
+                year: maxYear
             }
         },
         computed: {
@@ -35,16 +28,7 @@
             }
         },
         methods: {
-            toggleDropdown () {
-                if (!this.open) {
-                    this.open = true;
-                    this.$nextTick(() => {
-                        this.$refs.dropdown.focus();
-                    });
-                }
-            },
             onSelect () {
-                this.open = false;
                 this.$emit('newYear', this.year);
             }
         }
@@ -54,15 +38,6 @@
 .yearSelector {
     display: inline-block;
     border-bottom: 4px dotted white;
-    cursor: pointer;
-    min-width: 100px;
-}
-.yearSelector:hover {
-    color: #bbb;
-}
-.yearSelector div {
-    user-select: none;
-    margin-bottom: -4px;
 }
 .yearDropdown {
     font-size: inherit;
@@ -73,9 +48,15 @@
     border: none;
     cursor: pointer;
     text-align: center;
+    text-align-last: center;
     outline: none;
     -webkit-appearance: none;
     appearance: none;
+    padding: 0;
+    margin: 0;
+}
+.yearDropdown:hover {
+    color: #bbb;
 }
 .yearDropdown option {
     color: #2c3e50;
