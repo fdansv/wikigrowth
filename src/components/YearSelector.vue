@@ -1,75 +1,52 @@
 <template>
-    <div
-        class = 'yearSelector'
-        v-on:mousedown="onDragStart"
-        v-on:mousemove="onDragging"
-        v-on:mouseup="onDragEnd"
-        v-on:mouseout="onDragEnd" >
-        <div
-            :class='{selecting}' unselectable>
+    <div class='yearSelector' @click="toggleDropdown" ref="container">
+        <div v-if="!open">
             {{year}}
         </div>
+        <select
+            v-else
+            v-model="year"
+            @change="onSelect"
+            @blur="open = false"
+            ref="dropdown"
+            class="yearDropdown">
+            <option v-for="y in years" :key="y" :value="y">{{y}}</option>
+        </select>
     </div>
 </template>
 <script type="text/javascript">
-    import * as scale from 'd3-scale';
+    const minYear = 2002;
     const maxYear = 2025;
     export default {
         name: 'year-selector',
         data () {
             return {
                 year: maxYear,
-                selecting: false,
-                draggingInfo: {
-                    enterPosition: 0
+                open: false
+            }
+        },
+        computed: {
+            years () {
+                const yrs = [];
+                for (let y = maxYear; y >= minYear; y--) {
+                    yrs.push(y);
                 }
+                return yrs;
             }
         },
         methods: {
-            activateSelecting () {
-                this.selecting = true;
-            },
-            onInput (e) {
-                const newYear = parseInt(e.target.textContent);
-                if (parseInt(newYear) >= 2001 && parseInt(newYear) < maxYear) {
-                    this.year = newYear;
-                    this.selecting = false;
+            toggleDropdown () {
+                if (!this.open) {
+                    this.open = true;
+                    this.$nextTick(() => {
+                        this.$refs.dropdown.focus();
+                    });
                 }
             },
-            onClick(evnt) {
-                const el = evnt.target;
-                el.textContent = '20';
-            },
-            onDragStart (evnt) {
-                this.draggingInfo.enterPosition = evnt.clientX;
-                this.selecting = true;
-            },
-            onDragging (evnt) {
-                if(!this.selecting) return;
-                const offset = evnt.clientX - this.draggingInfo.enterPosition;
-                const yearRange = [2002, maxYear];
-                const interpolatedYear = scale.scaleLinear()
-                        .domain([0, 100])
-                        .range(yearRange)(evnt.offsetX);
-                this.year = Math.ceil(interpolatedYear);
-            },
-            onDragEnd (evnt) {
-                this.lockSelection(this.year);
-            },
-            lockSelection (year) {
-                this.selecting = false;
-                this.$emit('newYear', year);
-            },
-            selectAll (evnt) {
-                const el = evnt.target;
-                const range = document.createRange();
-                range.selectNodeContents(el);
-                const sel = window.getSelection();
-                sel.removeAllRanges();
-                sel.addRange(range);
+            onSelect () {
+                this.open = false;
+                this.$emit('newYear', this.year);
             }
-        },
-        watch: {
         }
     }
 </script>
@@ -77,17 +54,31 @@
 .yearSelector {
     display: inline-block;
     border-bottom: 4px dotted white;
+    cursor: pointer;
+    min-width: 100px;
 }
 .yearSelector:hover {
-    cursor: ew-resize;
     color: #bbb;
 }
 .yearSelector div {
     user-select: none;
     margin-bottom: -4px;
 }
-.selecting {
-    background-color: #FFFFDD;
-    color: #000;
+.yearDropdown {
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.yearDropdown option {
+    color: #2c3e50;
+    background: white;
 }
 </style>
