@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ranking Generator</title>
+  <meta name="description" content="Paste a list, judge every pair, get a ranking." />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <h1>Ranking Generator</h1>
+      <p class="sub">Paste a list. Judge every pair. Get a ranking.</p>
+    </header>
+
+    <!-- INPUT PHASE -->
+    <section id="input-phase" class="phase">
+      <label for="items" class="label">Your items (one per line)</label>
+      <textarea id="items" rows="12" placeholder="Spain
+Germany
+France
+Italy
+Portugal
+..."></textarea>
+
+      <div class="row">
+        <div class="hint" id="input-hint">0 items &middot; 0 matches</div>
+        <div class="actions">
+          <button class="btn ghost" id="example-btn" type="button">Load example</button>
+          <button class="btn primary" id="start-btn" type="button" disabled>Start ranking</button>
+        </div>
+      </div>
+
+      <details class="scoring">
+        <summary>Scoring rules</summary>
+        <ul>
+          <li><strong>Win</strong>: 3 points</li>
+          <li><strong>Draw</strong>: 1 point each</li>
+          <li><strong>Loss</strong>: 0 points</li>
+        </ul>
+        <p>Every item plays every other item exactly once (round-robin). Pairs are shuffled.</p>
+      </details>
+    </section>
+
+    <!-- MATCH PHASE -->
+    <section id="match-phase" class="phase hidden">
+      <div class="progress-wrap">
+        <div class="progress-bar"><div id="progress-fill"></div></div>
+        <div class="progress-text"><span id="progress-count">0 / 0</span></div>
+      </div>
+
+      <div class="match">
+        <button class="card" id="card-a" type="button">
+          <span class="card-kbd">1</span>
+          <span class="card-label" id="label-a"></span>
+        </button>
+        <div class="vs">vs</div>
+        <button class="card" id="card-b" type="button">
+          <span class="card-kbd">2</span>
+          <span class="card-label" id="label-b"></span>
+        </button>
+      </div>
+
+      <div class="match-actions">
+        <button class="btn ghost" id="draw-btn" type="button"><span class="kbd">D</span> Draw</button>
+        <button class="btn ghost" id="undo-btn" type="button" disabled>&larr; Undo</button>
+        <button class="btn ghost danger" id="quit-btn" type="button">Quit</button>
+      </div>
+
+      <p class="hint">Keyboard: <span class="kbd">1</span> / <span class="kbd">2</span> to pick, <span class="kbd">D</span> for draw, <span class="kbd">U</span> to undo.</p>
+    </section>
+
+    <!-- RESULT PHASE -->
+    <section id="result-phase" class="phase hidden">
+      <h2>Final ranking</h2>
+      <table class="ranking">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Item</th>
+            <th title="Points">Pts</th>
+            <th title="Wins">W</th>
+            <th title="Draws">D</th>
+            <th title="Losses">L</th>
+          </tr>
+        </thead>
+        <tbody id="ranking-body"></tbody>
+      </table>
+
+      <div class="actions end-actions">
+        <button class="btn ghost" id="copy-btn" type="button">Copy as text</button>
+        <button class="btn ghost" id="edit-btn" type="button">Edit list</button>
+        <button class="btn primary" id="restart-btn" type="button">Start over</button>
+      </div>
+      <p id="copy-status" class="hint" aria-live="polite"></p>
+    </section>
+
+    <footer class="foot">
+      <a href="../">&larr; wikigrowth</a>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
